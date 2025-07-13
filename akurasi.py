@@ -4,11 +4,10 @@ from sklearn.metrics import confusion_matrix, classification_report
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# --- KONFIGURASI ---
-# Nama folder utama yang berisi semua folder kondisi
+
 PARENT_FOLDER = "hasil_pengujian_final"
 
-# Nama folder-folder kondisi yang ada di dalam PARENT_FOLDER
+
 FOLDER_KONDISI = [
     "Arc_ke_Normal",
     "Arc_ke_Off",
@@ -79,9 +78,8 @@ def analisis_data():
             "Akurasi (%)": round(akurasi_persen, 2)
         })
 
-    # --- Membuat Laporan dan Validasi ---
     if hasil_analisis:
-        # Laporan Akurasi Sederhana
+    
         laporan_df = pd.DataFrame(hasil_analisis)
         total_data_keseluruhan = laporan_df['Total Data'].sum()
         total_benar_keseluruhan = laporan_df['Prediksi Benar (Sesuai)'].sum()
@@ -98,13 +96,13 @@ def analisis_data():
         print(laporan_sederhana_df.to_string())
         print("\nLaporan 'laporan_akurasi.csv' berhasil dibuat!")
 
-        # --- Membuat Laporan Metrik Lengkap ---
+
         print("\n--- Laporan Klasifikasi Lengkap (per Kelas) ---")
-        # Menghasilkan laporan sebagai string untuk ditampilkan di terminal
+   l
         report_string = classification_report(semua_diharapkan, semua_aktual)
         print(report_string)
 
-        # Menghasilkan laporan sebagai dictionary untuk disimpan ke CSV
+       
         report_dict = classification_report(semua_diharapkan, semua_aktual, output_dict=True)
         report_df = pd.DataFrame(report_dict).transpose()
         report_df.reset_index(inplace=True)
@@ -115,7 +113,7 @@ def analisis_data():
     else:
         print("\nTidak ada data yang diproses. Laporan tidak dibuat.")
 
-    # --- Membuat Confusion Matrix ---
+
     if semua_aktual and semua_diharapkan:
         labels = sorted(list(set(semua_aktual) | set(semua_diharapkan)))
         cm = confusion_matrix(semua_diharapkan, semua_aktual, labels=labels)
