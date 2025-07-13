@@ -1,0 +1,81 @@
+Waktu Relatif (detik),Tegangan (V),Arus (A),Mean Tegangan (V),Std Dev Tegangan (V),Mean Arus (A),Std Dev Arus (A),Output Sistem Aktual,Output Sistem yang Diharapkan,Akurasi
+0.29,255.10,0.04000000,130.02,93.44,0.08180000,0.03793099,Status: Arc Flash,Status: Arc Flash,Sesuai
+0.52,256.20,0.14000000,129.41,92.52,0.08400000,0.03805260,Status: Arc Flash,Status: Arc Flash,Sesuai
+0.79,227.13,0.08000000,131.78,93.47,0.08480000,0.03753612,Status: Arc Flash,Status: Arc Flash,Sesuai
+1.02,207.16,0.08000000,135.87,92.20,0.08340000,0.03636537,Status: Arc Flash,Status: Arc Flash,Sesuai
+1.24,196.40,0.07000000,134.71,91.06,0.08420000,0.03561404,Status: Arc Flash,Status: Arc Flash,Sesuai
+1.52,280.85,0.07000000,138.14,93.24,0.08420000,0.03561404,Status: Arc Flash,Status: Arc Flash,Sesuai
+1.78,253.24,0.06000000,138.49,93.65,0.08420000,0.03561404,Status: Arc Flash,Status: Arc Flash,Sesuai
+2.06,82.62,0.10000000,138.21,93.79,0.08400000,0.03549648,Status: Arc Flash,Status: Arc Flash,Sesuai
+2.36,141.98,0.11000000,137.28,93.52,0.08380000,0.03532082,Status: Arc Flash,Status: Arc Flash,Sesuai
+2.65,118.02,0.06000000,134.53,92.01,0.08400000,0.03515679,Status: Arc Flash,Status: Arc Flash,Sesuai
+2.88,139.25,0.14000000,137.16,90.20,0.08480000,0.03595775,Status: Arc Flash,Status: Arc Flash,Sesuai
+3.14,231.24,0.05000000,141.11,89.91,0.08520000,0.03545363,Status: Arc Flash,Status: Arc Flash,Sesuai
+3.36,134.75,0.10000000,142.93,88.84,0.08560000,0.03550549,Status: Arc Flash,Status: Arc Flash,Sesuai
+3.61,166.18,0.07000000,143.83,88.84,0.08500000,0.03551056,Status: Arc Flash,Status: Arc Flash,Sesuai
+3.87,271.75,0.06000000,145.18,90.26,0.08380000,0.03532082,Status: Arc Flash,Status: Arc Flash,Sesuai
+4.15,97.27,0.04000000,142.39,89.53,0.08300000,0.03584690,Status: Arc Flash,Status: Arc Flash,Sesuai
+4.38,1.60,0.11000000,141.69,90.50,0.08260000,0.03542937,Status: Arc Flash,Status: Arc Flash,Sesuai
+4.64,18.92,0.13000000,138.02,91.68,0.08380000,0.03599389,Status: Arc Flash,Status: Arc Flash,Sesuai
+4.88,160.26,0.06000000,140.37,90.71,0.08340000,0.03614471,Status: Arc Flash,Status: Arc Flash,Sesuai
+5.17,198.19,0.11000000,144.24,88.95,0.08280000,0.03544235,Status: Arc Flash,Status: Arc Flash,Sesuai
+5.41,255.08,0.09000000,148.87,88.58,0.08400000,0.03464102,Status: Arc Flash,Status: Arc Flash,Sesuai
+5.69,273.66,0.06000000,150.40,90.05,0.08380000,0.03474996,Status: Arc Flash,Status: Arc Flash,Sesuai
+5.92,220.29,0.07000000,149.51,89.13,0.08440000,0.03424383,Status: Arc Flash,Status: Arc Flash,Sesuai
+6.17,246.81,0.09000000,152.71,89.70,0.08460000,0.03424675,Status: Arc Flash,Status: Arc Flash,Sesuai
+6.43,13.84,0.04000000,150.33,91.75,0.08460000,0.03424675,Status: Arc Flash,Status: Arc Flash,Sesuai
+6.71,146.81,0.13000000,150.07,91.74,0.08500000,0.03465545,Status: Arc Flash,Status: Arc Flash,Sesuai
+6.97,192.22,0.07000000,153.87,89.45,0.08360000,0.03380887,Status: Arc Flash,Status: Arc Flash,Sesuai
+7.25,62.77,0.15000000,150.60,89.73,0.08500000,0.03505710,Status: Arc Flash,Status: Arc Flash,Sesuai
+7.47,173.69,0.04000000,153.36,88.27,0.08360000,0.03542654,Status: Arc Flash,Status: Arc Flash,Sesuai
+7.77,205.03,0.08000000,157.13,86.36,0.08460000,0.03459538,Status: Arc Flash,Status: Arc Flash,Sesuai
+8.04,50.85,0.07000000,153.54,86.97,0.08380000,0.03446099,Status: Arc Flash,Status: Arc Flash,Sesuai
+8.31,123.68,0.09000000,155.29,85.46,0.08380000,0.03446099,Status: Arc Flash,Status: Arc Flash,Sesuai
+8.54,0.00,0.00000000,151.51,88.02,0.08120000,0.03575696,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+8.81,0.00,0.00000000,147.63,90.31,0.08040000,0.03709232,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+9.04,0.00,0.00000000,143.93,92.47,0.07740000,0.03740642,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+9.30,0.00,0.00000000,138.69,93.05,0.07620000,0.03887879,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+9.57,0.00,0.00000000,137.98,93.97,0.07340000,0.03922295,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+9.81,0.00,0.00000000,137.62,94.46,0.07080000,0.03969080,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+10.11,0.00,0.00000000,135.47,96.33,0.06920000,0.04088227,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+10.35,0.00,0.00000000,134.66,97.29,0.06860000,0.04166581,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+10.59,0.00,0.00000000,132.76,98.96,0.06680000,0.04263520,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+10.85,0.00,0.00000000,127.94,99.44,0.06620000,0.04335389,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+11.13,0.00,0.00000000,124.74,100.92,0.06360000,0.04334789,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+11.41,0.00,0.00000000,123.27,102.18,0.06240000,0.04425201,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+11.65,0.00,0.00000000,121.99,103.30,0.06140000,0.04507815,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+11.89,0.00,0.00000000,119.32,104.69,0.06020000,0.04589074,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+12.19,0.00,0.00000000,119.12,104.91,0.05820000,0.04628996,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+12.43,0.00,0.00000000,118.67,105.37,0.05740000,0.04693868,Status: Arc Flash,Status: Off Contact,Tidak Sesuai
+12.66,0.00,0.00000000,112.81,103.67,0.05580000,0.04750116,Status: Off Contact,Status: Off Contact,Sesuai
+12.95,0.00,0.00000000,108.06,103.27,0.05320000,0.04692292,Status: Off Contact,Status: Off Contact,Sesuai
+13.18,0.00,0.00000000,102.95,102.18,0.05240000,0.04747884,Status: Off Contact,Status: Off Contact,Sesuai
+13.45,0.00,0.00000000,97.83,100.78,0.04960000,0.04634479,Status: Off Contact,Status: Off Contact,Sesuai
+13.74,0.00,0.00000000,93.29,99.97,0.04800000,0.04664762,Status: Off Contact,Status: Off Contact,Sesuai
+13.98,0.00,0.00000000,89.15,99.45,0.04640000,0.04689392,Status: Off Contact,Status: Off Contact,Sesuai
+14.22,0.00,0.00000000,85.22,99.02,0.04500000,0.04721229,Status: Off Contact,Status: Off Contact,Sesuai
+14.47,0.00,0.00000000,79.60,95.67,0.04360000,0.04748726,Status: Off Contact,Status: Off Contact,Sesuai
+14.72,0.00,0.00000000,74.54,93.01,0.04240000,0.04781464,Status: Off Contact,Status: Off Contact,Sesuai
+15.00,0.00,0.00000000,72.88,93.58,0.04040000,0.04745356,Status: Off Contact,Status: Off Contact,Sesuai
+15.22,0.00,0.00000000,70.04,93.60,0.03820000,0.04672002,Status: Off Contact,Status: Off Contact,Sesuai
+15.46,0.00,0.00000000,67.68,93.84,0.03700000,0.04691482,Status: Off Contact,Status: Off Contact,Sesuai
+15.69,0.00,0.00000000,64.90,93.75,0.03420000,0.04481473,Status: Off Contact,Status: Off Contact,Sesuai
+15.98,0.00,0.00000000,60.27,91.09,0.03320000,0.04500844,Status: Off Contact,Status: Off Contact,Sesuai
+16.24,0.00,0.00000000,57.58,90.84,0.03120000,0.04421041,Status: Off Contact,Status: Off Contact,Sesuai
+16.49,0.00,0.00000000,54.25,89.84,0.02980000,0.04406768,Status: Off Contact,Status: Off Contact,Sesuai
+16.77,0.00,0.00000000,48.82,84.59,0.02860000,0.04404589,Status: Off Contact,Status: Off Contact,Sesuai
+17.07,0.00,0.00000000,46.87,84.57,0.02780000,0.04419457,Status: Off Contact,Status: Off Contact,Sesuai
+17.35,0.00,0.00000000,46.84,84.59,0.02560000,0.04276260,Status: Off Contact,Status: Off Contact,Sesuai
+17.63,0.00,0.00000000,46.46,84.75,0.02300000,0.04021194,Status: Off Contact,Status: Off Contact,Sesuai
+17.88,0.00,0.00000000,43.26,83.41,0.02180000,0.03998450,Status: Off Contact,Status: Off Contact,Sesuai
+18.15,0.00,0.00000000,39.29,80.61,0.01960000,0.03805049,Status: Off Contact,Status: Off Contact,Sesuai
+18.38,0.00,0.00000000,34.19,74.65,0.01780000,0.03678532,Status: Off Contact,Status: Off Contact,Sesuai
+18.65,0.00,0.00000000,28.72,66.47,0.01660000,0.03636537,Status: Off Contact,Status: Off Contact,Sesuai
+18.94,0.00,0.00000000,24.31,60.68,0.01520000,0.03562246,Status: Off Contact,Status: Off Contact,Sesuai
+19.20,0.00,0.00000000,19.38,51.76,0.01340000,0.03403586,Status: Off Contact,Status: Off Contact,Sesuai
+19.43,0.00,0.00000000,19.10,51.82,0.01260000,0.03387093,Status: Off Contact,Status: Off Contact,Sesuai
+19.72,0.00,0.00000000,16.16,48.56,0.01000000,0.02946184,Status: Off Contact,Status: Off Contact,Sesuai
+19.99,0.00,0.00000000,12.32,41.58,0.00860000,0.02821418,Status: Off Contact,Status: Off Contact,Sesuai
+20.23,0.00,0.00000000,11.07,40.98,0.00560000,0.01971395,Status: Off Contact,Status: Off Contact,Sesuai
+20.49,0.00,0.00000000,7.59,33.78,0.00480000,0.01910393,Status: Off Contact,Status: Off Contact,Sesuai
+20.76,0.00,0.00000000,3.49,18.59,0.00320000,0.01580380,Status: Off Contact,Status: Off Contact,Sesuai

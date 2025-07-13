@@ -1,0 +1,77 @@
+Waktu Relatif (detik),Tegangan (V),Arus (A),Mean Tegangan (V),Std Dev Tegangan (V),Mean Arus (A),Std Dev Arus (A),Output Sistem Aktual,Output Sistem yang Diharapkan,Akurasi
+0.28,34.92,0.08000000,159.16,89.71,0.08960000,0.03820785,Status: Arc Flash,Status: Arc Flash,Sesuai
+0.55,189.75,0.06000000,160.54,89.65,0.09020000,0.03749613,Status: Arc Flash,Status: Arc Flash,Sesuai
+0.81,156.32,0.13000000,160.81,89.61,0.09220000,0.03689390,Status: Arc Flash,Status: Arc Flash,Sesuai
+1.03,210.72,0.06000000,164.80,87.27,0.09280000,0.03611316,Status: Arc Flash,Status: Arc Flash,Sesuai
+1.27,111.54,0.03000000,166.54,85.30,0.09280000,0.03611316,Status: Arc Flash,Status: Arc Flash,Sesuai
+1.54,202.58,0.11000000,166.69,85.36,0.09320000,0.03619061,Status: Arc Flash,Status: Arc Flash,Sesuai
+1.80,141.95,0.08000000,163.60,83.37,0.09200000,0.03560899,Status: Arc Flash,Status: Arc Flash,Sesuai
+2.04,68.72,0.05000000,160.21,83.72,0.09180000,0.03581564,Status: Arc Flash,Status: Arc Flash,Sesuai
+2.27,22.27,0.10000000,154.98,84.00,0.09260000,0.03554209,Status: Arc Flash,Status: Arc Flash,Sesuai
+2.55,151.22,0.04000000,153.86,83.67,0.09120000,0.03620166,Status: Arc Flash,Status: Arc Flash,Sesuai
+2.78,81.54,0.06000000,151.55,84.04,0.09060000,0.03646423,Status: Arc Flash,Status: Arc Flash,Sesuai
+3.08,73.42,0.05000000,147.42,82.69,0.09040000,0.03665842,Status: Arc Flash,Status: Arc Flash,Sesuai
+3.31,89.64,0.05000000,148.77,81.16,0.08860000,0.03638736,Status: Arc Flash,Status: Arc Flash,Sesuai
+3.54,12.30,0.06000000,143.23,80.83,0.08700000,0.03584690,Status: Arc Flash,Status: Arc Flash,Sesuai
+3.84,295.76,0.09000000,147.41,83.17,0.08660000,0.03569930,Status: Arc Flash,Status: Arc Flash,Sesuai
+4.09,208.95,0.14000000,147.04,82.85,0.08840000,0.03607548,Status: Arc Flash,Status: Arc Flash,Sesuai
+4.32,69.49,0.10000000,145.79,83.53,0.08800000,0.03583295,Status: Arc Flash,Status: Arc Flash,Sesuai
+4.55,50.60,0.11000000,143.57,84.55,0.08860000,0.03594496,Status: Arc Flash,Status: Arc Flash,Sesuai
+4.82,71.51,0.08000000,140.08,83.86,0.08860000,0.03594496,Status: Arc Flash,Status: Arc Flash,Sesuai
+5.08,272.72,0.13000000,143.01,85.86,0.08920000,0.03637802,Status: Arc Flash,Status: Arc Flash,Sesuai
+5.35,7.02,0.10000000,140.50,87.94,0.08920000,0.03637802,Status: Arc Flash,Status: Arc Flash,Sesuai
+5.58,246.36,0.12000000,140.11,87.42,0.08880000,0.03592436,Status: Arc Flash,Status: Arc Flash,Sesuai
+5.87,60.83,0.13000000,138.73,88.11,0.08860000,0.03566567,Status: Arc Flash,Status: Arc Flash,Sesuai
+6.13,157.62,0.04000000,139.46,88.12,0.08740000,0.03626624,Status: Arc Flash,Status: Arc Flash,Sesuai
+6.40,289.09,0.04000000,144.95,88.72,0.08640000,0.03686516,Status: Arc Flash,Status: Arc Flash,Sesuai
+6.65,107.69,0.06000000,144.27,88.87,0.08520000,0.03672819,Status: Arc Flash,Status: Arc Flash,Sesuai
+6.89,77.30,0.09000000,142.33,89.25,0.08420000,0.03589373,Status: Arc Flash,Status: Arc Flash,Sesuai
+7.12,266.47,0.09000000,146.41,90.17,0.08460000,0.03584466,Status: Arc Flash,Status: Arc Flash,Sesuai
+7.34,98.03,0.07000000,144.91,90.34,0.08420000,0.03589373,Status: Arc Flash,Status: Arc Flash,Sesuai
+7.58,173.33,0.11000000,143.92,89.75,0.08340000,0.03484882,Status: Arc Flash,Status: Arc Flash,Sesuai
+7.87,142.29,0.05000000,145.37,89.12,0.08380000,0.03434472,Status: Arc Flash,Status: Arc Flash,Sesuai
+8.14,41.35,0.15000000,145.41,89.08,0.08560000,0.03539265,Status: Arc Flash,Status: Arc Flash,Sesuai
+8.40,298.30,0.09000000,147.99,91.57,0.08660000,0.03479138,Status: Arc Flash,Status: Arc Flash,Sesuai
+8.64,98.40,0.10000000,145.00,90.69,0.08620000,0.03451898,Status: Arc Flash,Status: Arc Flash,Sesuai
+8.86,266.90,0.05000000,149.75,90.73,0.08460000,0.03430510,Status: Arc Flash,Status: Normal,Tidak Sesuai
+9.16,265.99,0.05000000,149.30,90.09,0.08420000,0.03458844,Status: Arc Flash,Status: Normal,Tidak Sesuai
+9.41,266.95,0.05000000,152.33,91.44,0.08320000,0.03483906,Status: Arc Flash,Status: Normal,Tidak Sesuai
+9.68,266.35,0.05000000,154.45,92.82,0.08120000,0.03380178,Status: Arc Flash,Status: Normal,Tidak Sesuai
+9.97,266.31,0.05000000,153.88,92.05,0.08140000,0.03358631,Status: Arc Flash,Status: Normal,Tidak Sesuai
+10.26,266.84,0.05000000,158.09,92.31,0.07960000,0.03280000,Status: Arc Flash,Status: Normal,Tidak Sesuai
+10.51,266.35,0.05000000,158.58,92.81,0.07940000,0.03294905,Status: Arc Flash,Status: Normal,Tidak Sesuai
+10.80,266.34,0.05000000,160.05,93.92,0.07880000,0.03320482,Status: Arc Flash,Status: Normal,Tidak Sesuai
+11.03,266.37,0.05000000,164.84,93.11,0.07740000,0.03291261,Status: Arc Flash,Status: Normal,Tidak Sesuai
+11.29,265.91,0.05000000,170.15,91.12,0.07640000,0.03297029,Status: Arc Flash,Status: Normal,Tidak Sesuai
+11.59,266.77,0.05000000,171.64,92.08,0.07660000,0.03277865,Status: Arc Flash,Status: Normal,Tidak Sesuai
+11.88,266.40,0.05000000,171.51,91.94,0.07640000,0.03290957,Status: Arc Flash,Status: Normal,Tidak Sesuai
+12.12,266.03,0.05000000,172.25,92.55,0.07480000,0.03220186,Status: Arc Flash,Status: Normal,Tidak Sesuai
+12.36,265.77,0.05000000,175.65,92.80,0.07300000,0.03100000,Status: Arc Flash,Status: Normal,Tidak Sesuai
+12.59,266.17,0.05000000,176.10,93.18,0.07340000,0.03056861,Status: Arc Flash,Status: Normal,Tidak Sesuai
+12.87,265.37,0.05000000,176.82,93.72,0.07300000,0.03074085,Status: Arc Flash,Status: Normal,Tidak Sesuai
+13.14,266.68,0.05000000,181.45,92.31,0.07240000,0.03089078,Status: Normal,Status: Normal,Sesuai
+13.42,266.94,0.05000000,183.00,93.08,0.07220000,0.03100258,Status: Normal,Status: Normal,Sesuai
+13.65,266.26,0.05000000,185.19,93.72,0.07060000,0.03002732,Status: Normal,Status: Normal,Sesuai
+13.91,267.23,0.05000000,186.32,94.36,0.07040000,0.03013038,Status: Normal,Status: Normal,Sesuai
+14.14,266.56,0.05000000,189.42,94.40,0.07080000,0.02972137,Status: Normal,Status: Normal,Sesuai
+14.43,266.89,0.05000000,190.71,95.00,0.06960000,0.02932303,Status: Normal,Status: Normal,Sesuai
+14.70,267.00,0.05000000,193.21,95.33,0.06900000,0.02941088,Status: Normal,Status: Normal,Sesuai
+14.95,267.12,0.05000000,197.18,94.19,0.06900000,0.02941088,Status: Normal,Status: Normal,Sesuai
+15.20,266.09,0.05000000,202.06,91.27,0.06800000,0.02918904,Status: Normal,Status: Normal,Sesuai
+15.44,266.63,0.05000000,204.36,91.42,0.06820000,0.02903033,Status: Normal,Status: Normal,Sesuai
+15.69,266.99,0.05000000,208.07,90.11,0.06800000,0.02912044,Status: Normal,Status: Normal,Sesuai
+15.94,266.65,0.05000000,211.94,88.38,0.06800000,0.02912044,Status: Normal,Status: Normal,Sesuai
+16.23,265.49,0.05000000,215.46,86.93,0.06800000,0.02912044,Status: Normal,Status: Normal,Sesuai
+16.48,266.45,0.05000000,220.54,82.21,0.06780000,0.02920890,Status: Normal,Status: Normal,Sesuai
+16.71,266.93,0.05000000,219.96,81.78,0.06700000,0.02913760,Status: Normal,Status: Normal,Sesuai
+17.00,266.91,0.05000000,221.12,82.02,0.06520000,0.02729396,Status: Normal,Status: Normal,Sesuai
+17.30,266.60,0.05000000,225.06,79.33,0.06420000,0.02691394,Status: Normal,Status: Normal,Sesuai
+17.55,267.06,0.05000000,229.39,75.51,0.06300000,0.02617250,Status: Normal,Status: Normal,Sesuai
+17.80,266.97,0.05000000,233.30,72.22,0.06240000,0.02611972,Status: Normal,Status: Normal,Sesuai
+18.03,265.72,0.05000000,233.16,72.15,0.06080000,0.02431789,Status: Normal,Status: Normal,Sesuai
+18.29,266.98,0.05000000,238.36,64.65,0.05980000,0.02370570,Status: Normal,Status: Normal,Sesuai
+18.58,266.80,0.05000000,238.77,64.76,0.05840000,0.02212329,Status: Normal,Status: Normal,Sesuai
+18.80,266.28,0.05000000,242.88,59.66,0.05680000,0.01964077,Status: Normal,Status: Normal,Sesuai
+19.09,265.82,0.05000000,245.04,58.47,0.05700000,0.01951922,Status: Normal,Status: Normal,Sesuai
+19.37,266.22,0.05000000,244.58,58.22,0.05720000,0.01939484,Status: Normal,Status: Normal,Sesuai
+19.65,266.34,0.05000000,247.76,54.90,0.05700000,0.01941649,Status: Normal,Status: Normal,Sesuai
