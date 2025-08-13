@@ -1,0 +1,5 @@
+Jenis Transisi,Rata-rata (baris data),Minimum (baris data),Maksimum (baris data)
+Dari Status: Arc Flash ke Status: Normal,16.0,12,19
+Dari Status: Arc Flash ke Status: Off Contact,18.6,15,22
+Dari Status: Normal ke Status: Arc Flash,4.8,4,5
+Dari Status: Off Contact ke Status: Arc Flash,16.5,14,20

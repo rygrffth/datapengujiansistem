@@ -6,18 +6,20 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 
+output_folder = os.path.join('hasil_pengujian_20ws', 'output pengujian')
+os.makedirs(output_folder, exist_ok=True)
 
 file_pairs_info = [
     {
-        "truth_folder": 'akurasi 100 normal ke arc ke off dari sistem',
+        "truth_folder": os.path.join('hasil_pengujian_20ws', 'akurasi 100 normal ke arc ke off dari sistem'),
         "truth_prefix": 'normal arc off dari sistem',
-        "pred_folder": 'normal ke arc ke off dari sistem',
+        "pred_folder": os.path.join('hasil_pengujian_20ws', 'normal ke arc ke off dari sistem'),
         "pred_prefix": 'normal arc off dari sistem'
     },
     {
-        "truth_folder": 'akurasi 100 off contact ke arc ke normal',
+        "truth_folder": os.path.join('hasil_pengujian_20ws', 'akurasi 100 off contact ke arc ke normal'),
         "truth_prefix": 'off arc normal dari sistem',
-        "pred_folder": 'off ke arc ke normal dari sistem',
+        "pred_folder": os.path.join('hasil_pengujian_20ws', 'off ke arc ke normal dari sistem'),
         "pred_prefix": 'off arc normal dari sistem'
     }
 ]
@@ -44,10 +46,11 @@ def save_df_as_png(df, filename, title, footer_text=None):
         if footer_text:
             plt.figtext(0.5, 0.05, footer_text, ha="center", fontsize=12, weight='bold')
 
+        output_path = os.path.join(output_folder, filename)
         plt.tight_layout(pad=1)
-        plt.savefig(filename, bbox_inches='tight', pad_inches=0.5)
+        plt.savefig(output_path, bbox_inches='tight', pad_inches=0.5)
         plt.close(fig)
-        print(f"-> Gambar Tabel '{filename}' berhasil disimpan.")
+        print(f"-> Gambar Tabel '{output_path}' berhasil disimpan.")
     except Exception as e:
         print(f"Gagal membuat gambar tabel '{filename}': {e}")
 
@@ -134,7 +137,7 @@ for pair in file_pairs_info:
 
 if all_true_labels:
     print("\n\n" + "="*50)
-    print("---            HASIL AKHIR PENGUJIAN            ---")
+    print("---                                HASIL AKHIR PENGUJIAN                                ---")
     print("="*50)
 
     print("\n--- Hasil Akurasi per Skenario Transisi ---")
@@ -229,7 +232,7 @@ if all_true_labels:
         df_delay_summary = pd.DataFrame(delay_summary_list)
         save_df_as_png(df_delay_summary, 'analisis_waktu_tunda_deteksi.png', 'Tabel Hasil Analisis Waktu Tunda Deteksi')
     
-    output_excel_path = 'laporan_pengujian_lengkap.xlsx'
+    output_excel_path = os.path.join(output_folder, 'laporan_pengujian_lengkap.xlsx')
     print(f"\nMenyimpan semua laporan ke file Excel: {output_excel_path}")
     try:
         with pd.ExcelWriter(output_excel_path, engine='openpyxl') as writer:
@@ -262,7 +265,8 @@ if all_true_labels:
         plt.xticks(rotation=45, ha="right")
         plt.yticks(rotation=0)
         plt.tight_layout()
-        plt.savefig('confusion_matrix_gabungan.png')
+        output_cm_path = os.path.join(output_folder, 'confusion_matrix_gabungan.png')
+        plt.savefig(output_cm_path)
         print(f"-> Gambar Confusion Matrix berhasil disimpan.")
     except Exception as e:
         print(f"Gagal membuat gambar Confusion Matrix: {e}")

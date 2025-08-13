@@ -3,8 +3,10 @@ import pandas as pd
 from sklearn.metrics import confusion_matrix, classification_report
 import seaborn as sns
 import matplotlib.pyplot as plt
+import numpy as np
 
 PARENT_FOLDER = "hasil_pengujian_50ws"
+OUTPUT_FOLDER = "output_pengujian"
 
 FOLDER_KONDISI = [
     "Arc_ke_Normal",
@@ -15,37 +17,63 @@ FOLDER_KONDISI = [
 
 KOLOM_AKTUAL = "Output Sistem Aktual"
 KOLOM_DIHARAPKAN = "Output Sistem yang Diharapkan"
+# Menggunakan 'Waktu Relatif (detik)' jika diperlukan, tapi untuk delay dalam baris, ini tidak dipakai
+# KOLOM_TIMESTAMP = "Waktu Relatif (detik)"
 
-def hitung_delay_per_kondisi(df):
-    delay_info = {}
+# Mapping untuk mencocokkan nama label di data dengan key transisi
+LABEL_MAP = {
+    'Status: Normal': 'Normal',
+    'Status: Arc Flash': 'Arc',
+    'Status: Off Contact': 'Off'
+}
+
+def analisis_waktu_tunda(df):
+    """
+    Menganalisis waktu tunda deteksi (dalam jumlah baris data) untuk setiap transisi.
+    """
+    delays = {}
     
-    perubahan_kondisi_diharapkan = df[KOLOM_DIHARAPKAN].ne(df[KOLOM_DIHARAPKAN].shift()).index
+    transisi_diharapkan_index = df[df[KOLOM_DIHARAPKAN].ne(df[KOLOM_DIHARAPKAN].shift())].index.tolist()
     
-    if len(perubahan_kondisi_diharapkan) > 1:
-        for i in range(1, len(perubahan_kondisi_diharapkan)):
-            indeks_awal_perubahan = perubahan_kondisi_diharapkan[i]
-            kondisi_baru_diharapkan = df.loc[indeks_awal_perubahan, KOLOM_DIHARAPKAN]
+    for idx in transisi_diharapkan_index:
+        if idx == 0:
+            continue
+        
+        label_sebelum_raw = df.loc[idx - 1, KOLOM_DIHARAPKAN].strip()
+        label_sekarang_raw = df.loc[idx, KOLOM_DIHARAPKAN].strip()
+        
+        if label_sebelum_raw == label_sekarang_raw:
+            continue
+
+        label_sebelum = LABEL_MAP.get(label_sebelum_raw, label_sebelum_raw)
+        label_sekarang = LABEL_MAP.get(label_sekarang_raw, label_sekarang_raw)
+        
+        transisi_key = f"Dari {label_sebelum_raw} ke {label_sekarang_raw}"
+        
+        prediksi_index_pertama = df.index[(df.index >= idx) & (df[KOLOM_AKTUAL].str.strip() == label_sekarang_raw)]
+        
+        if not prediksi_index_pertama.empty:
+            prediksi_idx = prediksi_index_pertama[0]
             
-            try:
-                indeks_deteksi_awal = df.loc[indeks_awal_perubahan:][KOLOM_AKTUAL].eq(kondisi_baru_diharapkan).idxmax()
-                delay = indeks_deteksi_awal - indeks_awal_perubahan
-            except ValueError:
-                delay = -1
+            # Menghitung delay sebagai jumlah baris
+            delay_rows = prediksi_idx - idx
             
-            nama_perubahan = f"Dari {df.loc[indeks_awal_perubahan - 1, KOLOM_DIHARAPKAN]} ke {kondisi_baru_diharapkan}"
+            if transisi_key not in delays:
+                delays[transisi_key] = []
+            delays[transisi_key].append(delay_rows)
             
-            if nama_perubahan not in delay_info:
-                delay_info[nama_perubahan] = []
-            delay_info[nama_perubahan].append(delay)
-            
-    return delay_info
+    return delays
 
 def analisis_data():
+    """
+    Fungsi utama untuk membaca semua file, menghitung metrik lengkap,
+    dan menghasilkan laporan serta confusion matrix.
+    """
     hasil_analisis = []
     semua_aktual = []
     semua_diharapkan = []
-    semua_delay = {}
-
+    semua_delays = {}
+    
     print("Memulai analisis data...")
     
     path_parent_folder = os.path.join(os.getcwd(), PARENT_FOLDER)
@@ -53,6 +81,11 @@ def analisis_data():
         print(f"KESALAHAN: Folder utama '{PARENT_FOLDER}' tidak ditemukan.")
         return
 
+    path_output_folder = os.path.join(path_parent_folder, OUTPUT_FOLDER)
+    os.makedirs(path_output_folder, exist_ok=True)
+    print(f"Folder output '{path_output_folder}' berhasil dibuat.")
+
+    file_processed = False
     for nama_folder in FOLDER_KONDISI:
         path_folder = os.path.join(path_parent_folder, nama_folder)
         if not os.path.exists(path_folder):
@@ -67,20 +100,20 @@ def analisis_data():
             nama_file = f"percobaan_{i}.csv"
             path_file = os.path.join(path_folder, nama_file)
             if not os.path.exists(path_file):
-                print(f"  - File '{nama_file}' tidak ditemukan. Melewati...")
+                print(f"  - File '{nama_file}' tidak ditemukan. Melewati...")
                 continue
             
             try:
                 df = pd.read_csv(path_file)
+                if not file_processed:
+                    print("\n--- Nama-nama Kolom yang Ditemukan di File Pertama ---")
+                    print(df.columns.tolist())
+                    print("-----------------------------------------------------")
+                    file_processed = True
+
                 if KOLOM_AKTUAL not in df.columns or KOLOM_DIHARAPKAN not in df.columns:
-                    print(f"  - PERINGATAN: Kolom penting tidak ada di '{nama_file}'.")
+                    print(f"  - PERINGATAN: Kolom penting ('{KOLOM_AKTUAL}' atau '{KOLOM_DIHARAPKAN}') tidak ada di '{nama_file}'.")
                     continue
-                
-                delay_data = hitung_delay_per_kondisi(df)
-                for kondisi, delays in delay_data.items():
-                    if kondisi not in semua_delay:
-                        semua_delay[kondisi] = []
-                    semua_delay[kondisi].extend(delays)
                 
                 prediksi_benar = (df[KOLOM_AKTUAL] == df[KOLOM_DIHARAPKAN]).sum()
                 total_data_kondisi += len(df)
@@ -88,8 +121,15 @@ def analisis_data():
                 
                 semua_aktual.extend(df[KOLOM_AKTUAL].tolist())
                 semua_diharapkan.extend(df[KOLOM_DIHARAPKAN].tolist())
+
+                delays_per_file = analisis_waktu_tunda(df)
+                for key, values in delays_per_file.items():
+                    if key not in semua_delays:
+                        semua_delays[key] = []
+                    semua_delays[key].extend(values)
+                    
             except Exception as e:
-                print(f"  - Gagal memproses file '{nama_file}': {e}")
+                print(f"  - Gagal memproses file '{nama_file}': {e}")
 
         salah_kondisi = total_data_kondisi - benar_kondisi
         akurasi_persen = (benar_kondisi / total_data_kondisi * 100) if total_data_kondisi > 0 else 0
@@ -102,7 +142,7 @@ def analisis_data():
             "Akurasi (%)": round(akurasi_persen, 2)
         })
 
-    if hasil_analisis:
+    if hasil_analisis and all(h['Total Data'] > 0 for h in hasil_analisis):
         laporan_df = pd.DataFrame(hasil_analisis)
         total_data_keseluruhan = laporan_df['Total Data'].sum()
         total_benar_keseluruhan = laporan_df['Prediksi Benar (Sesuai)'].sum()
@@ -110,61 +150,32 @@ def analisis_data():
         akurasi_total_gabungan = (total_benar_keseluruhan / total_data_keseluruhan * 100) if total_data_keseluruhan > 0 else 0
         
         summary_row = pd.DataFrame([{"Nama Kondisi": "--- TOTAL KESELURUHAN ---", "Total Data": total_data_keseluruhan,
-                                     "Prediksi Benar (Sesuai)": total_benar_keseluruhan, "Prediksi Salah (Tidak Sesuai)": total_salah_keseluruhan,
-                                     "Akurasi (%)": round(akurasi_total_gabungan, 2)}])
+                                    "Prediksi Benar (Sesuai)": total_benar_keseluruhan, "Prediksi Salah (Tidak Sesuai)": total_salah_keseluruhan,
+                                    "Akurasi (%)": round(akurasi_total_gabungan, 2)}])
         
         laporan_sederhana_df = pd.concat([laporan_df, summary_row], ignore_index=True)
-        laporan_sederhana_df.to_csv(os.path.join(path_parent_folder, "laporan_akurasi.csv"), index=False)
+        laporan_sederhana_df.to_csv(os.path.join(path_output_folder, "laporan_akurasi.csv"), index=False)
         print("\n\n--- Laporan Akurasi Sederhana ---")
         print(laporan_sederhana_df.to_string())
-        print(f"\nLaporan 'laporan_akurasi.csv' berhasil dibuat di folder '{PARENT_FOLDER}'!")
+        print(f"\nLaporan 'laporan_akurasi.csv' berhasil dibuat di folder '{path_output_folder}'!")
+
 
         print("\n--- Laporan Klasifikasi Lengkap (per Kelas) ---")
         try:
             report_string = classification_report(semua_diharapkan, semua_aktual)
             print(report_string)
-
             report_dict = classification_report(semua_diharapkan, semua_aktual, output_dict=True)
             report_df = pd.DataFrame(report_dict).transpose()
             report_df.reset_index(inplace=True)
             report_df = report_df.rename(columns={'index': 'Kelas'})
-            report_df.to_csv(os.path.join(path_parent_folder, "laporan_metrik_lengkap.csv"), index=False)
-            print(f"Laporan 'laporan_metrik_lengkap.csv' berhasil dibuat di folder '{PARENT_FOLDER}'!")
-        except ValueError as e:
-            print(f"PERINGATAN: Gagal membuat laporan klasifikasi. Mungkin ada label yang tidak ada di data: {e}")
-
-        print("\n--- Laporan Delay per Kondisi ---")
-        if semua_delay:
-            delay_data_final = []
-            
-            target_transitions = [
-                "Dari Status: Arc Flash ke Status: Normal",
-                "Dari Status: Arc Flash ke Status: Off Contact",
-                "Dari Status: Normal ke Status: Arc Flash",
-                "Dari Status: Off Contact ke Status: Arc Flash"
-            ]
-            
-            for kondisi in target_transitions:
-                if kondisi in semua_delay and semua_delay[kondisi]:
-                    valid_delays = [d for d in semua_delay[kondisi] if d != -1]
-                    avg_delay = sum(valid_delays) / len(valid_delays) if valid_delays else 'N/A'
-                    delay_data_final.append({
-                        "Perubahan Kondisi": kondisi,
-                        "Rata-rata Delay (baris data)": round(avg_delay, 2) if isinstance(avg_delay, (int, float)) else avg_delay
-                    })
-            
-            if delay_data_final:
-                delay_df = pd.DataFrame(delay_data_final)
-                print(delay_df.to_string())
-                delay_df.to_csv(os.path.join(path_parent_folder, "laporan_delay.csv"), index=False)
-                print(f"\nLaporan 'laporan_delay.csv' berhasil dibuat di folder '{PARENT_FOLDER}'!")
-            else:
-                print("Tidak ada data delay untuk transisi yang diminta.")
-        else:
-            print("Tidak ada data delay yang dapat dihitung.")
+            report_df.to_csv(os.path.join(path_output_folder, "laporan_metrik_lengkap.csv"), index=False)
+            print(f"Laporan 'laporan_metrik_lengkap.csv' berhasil dibuat di folder '{path_output_folder}'!")
+        except Exception as e:
+            print(f"Gagal membuat laporan klasifikasi: {e}")
 
     else:
         print("\nTidak ada data yang diproses. Laporan tidak dibuat.")
+
 
     if semua_aktual and semua_diharapkan:
         labels = sorted(list(set(semua_aktual) | set(semua_diharapkan)))
@@ -180,10 +191,33 @@ def analisis_data():
         plt.yticks(rotation=0)
         plt.tight_layout()
         
-        plt.savefig(os.path.join(path_parent_folder, "confusion_matrix.png"))
-        print(f"\nGambar 'confusion_matrix.png' berhasil dibuat di folder '{PARENT_FOLDER}'!")
+        plt.savefig(os.path.join(path_output_folder, "confusion_matrix.png"))
+        print(f"\nGambar 'confusion_matrix.png' berhasil dibuat di folder '{path_output_folder}'!")
     else:
         print("\nTidak ada data untuk membuat confusion matrix.")
+
+    print("\n--- Ringkasan Analisis Waktu Tunda ---")
+    delay_summary = []
+    
+    for key, values in semua_delays.items():
+        if values:
+            avg = np.mean(values)
+            min_val = np.min(values)
+            max_val = np.max(values)
+            delay_summary.append({
+                "Jenis Transisi": key,
+                "Rata-rata (baris data)": round(avg, 2),
+                "Minimum (baris data)": int(min_val),
+                "Maksimum (baris data)": int(max_val)
+            })
+    
+    if delay_summary:
+        delay_df = pd.DataFrame(delay_summary)
+        print(delay_df.to_string(index=False))
+        delay_df.to_csv(os.path.join(path_output_folder, "analisis_waktu_tunda.csv"), index=False)
+        print(f"\nLaporan 'analisis_waktu_tunda.csv' berhasil dibuat di folder '{path_output_folder}'!")
+    else:
+        print("Tidak ada data transisi untuk dianalisis.")
 
 if __name__ == "__main__":
     analisis_data()

@@ -1,0 +1,6 @@
+Nama Kondisi,Total Data,Prediksi Benar (Sesuai),Prediksi Salah (Tidak Sesuai),Akurasi (%)
+Arc_ke_Normal,834,674,160,80.82
+Arc_ke_Off,847,661,186,78.04
+Normal_ke_Arc,735,687,48,93.47
+Off_ke_Arc,865,700,165,80.92
+--- TOTAL KESELURUHAN ---,3281,2722,559,82.96
